@@ -1,51 +1,159 @@
-<h1 align="center"> RocketSeat nlw/COPA </h1>
+# 🏆 World Cup 2026 API
 
-<p align="center">
-Evento exclusivo e gratuito, promovido pela Rocketseat para ensino de tecnologias WEB.
-</p>
+Uma plataforma completa para gerenciar a Copa do Mundo de 2026 com **12 grupos (A-L)**, **API RESTful** e **atualização automática de resultados**.
 
-<p align="center">
-  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-demonstração">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
-</p>
+## 🎯 Recursos
 
-<p align="center">
-  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000">
-</p>
+✅ **Backend Robusto**
+- Node.js + Express
+- Banco de dados SQLite
+- API RESTful com CORS
+- 12 Grupos com 4 times cada
+- Atualização automática de pontuação e avanços
 
-<br>
+✅ **Frontend Dinâmico**  
+- Calendário de jogos por data
+- Classificações em tempo real
+- Atualização automática ao registrar resultados
+- Interface limpa e responsiva
 
-<p align="center">
-  <img alt="Calendário da Copa" src=".github/prewiev.jpg" width="100%">
-</p>
+## 📁 Estrutura do Projeto
 
-## 🚀 Tecnologias
+```
+world-cup-API/
+├── backend/              
+│   ├── server.js         (API RESTful)
+│   ├── database.js       (SQLite)
+│   ├── gameLogic.js      (Lógica de pontuação)
+│   ├── seed.js           (Dados iniciais)
+│   └── package.json
+│
+└── frontend/              
+    ├── index.html        (Layout)
+    ├── main.js           (Consome API)
+    ├── style.css         (Estilos)
+    └── assets/           (Bandeiras, logos)
+```
 
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+## 🚀 Quick Start
 
-- HTML e CSS
-- JavaScript
-- Git e Github
+### 1. Backend
 
-## 💻 Projeto
+```bash
+cd backend
+npm install
+npm start
+```
 
-O Calendário da Copa é um projeto que mostra os jogos da Copa de 2022.
+Servidor rodando: `http://localhost:3000`
 
-## 💻 Demonstração
+### 2. Frontend (novo terminal)
 
-https://github.com/mrnsato/nlw-10-copa
+```bash
+cd frontend
+npx http-server
+# ou
+python3 -m http.server 8000
+```
 
-## 🔖 Layout
+Abra: `http://localhost:8000`
 
-Você pode visualizar o layout do projeto através do [link no Figma](<https://www.figma.com/file/01Q1puG6BFnVmHLlYzWuch/Calend%C3%A1rio-de-Jogos-(Community)?node-id=0%3A1>). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
+## 📊 API Endpoints
 
-## :memo: Licença
+### Grupos
+```bash
+GET    /api/groups               # Listar todos
+POST   /api/groups               # Criar novo
+```
 
-Esse projeto está sob a licença MIT.
+### Times
+```bash
+GET    /api/groups/:groupId/teams   # Listar por grupo
+POST   /api/teams                   # Criar novo
+```
+
+### Jogos
+```bash
+GET    /api/games                   # Listar todos
+GET    /api/games/:gameId           # Detalhes
+PUT    /api/games/:gameId/result    # Registrar resultado ⭐
+GET    /api/groups/:groupId/games   # Jogos por grupo
+```
+
+### Classificações
+```bash
+GET    /api/standings/:groupId       # Classificação
+GET    /api/advanced-teams           # Times que avançaram
+```
+
+## 🧪 Testando
+
+```bash
+# Listar todos os grupos
+curl http://localhost:3000/api/groups
+
+# Listar times do Grupo A
+curl http://localhost:3000/api/groups/A/teams
+
+# Registrar resultado
+curl -X PUT http://localhost:3000/api/games/game-1/result \
+  -H "Content-Type: application/json" \
+  -d '{"team1Goals": 2, "team2Goals": 1}'
+
+# Ver classificação
+curl http://localhost:3000/api/standings/A
+```
+
+## 🎮 Como Usar o Frontend
+
+O frontend conecta automaticamente na API e exibe:
+- 📅 Jogos agrupados por data
+- 🏆 Classificações dos grupos
+- ⚡ Atualização em tempo real
+
+Use no console do navegador:
+```javascript
+// Registrar resultado de um jogo
+updateGameResult('game-1', 2, 1);
+
+// Recarregar dados
+loadGames();
+loadStandings('A');
+```
+
+## 🛠️ Tecnologias
+
+**Backend:**
+- Node.js 24+
+- Express.js 4.18
+- SQLite 3
+- CORS habilitado
+
+**Frontend:**
+- HTML5
+- CSS3
+- JavaScript ES6+
+- Fetch API
+
+## 📚 Documentação Completa
+
+Ver [SETUP.md](./SETUP.md) para guia detalhado e troubleshooting.
+
+## 🎯 Melhorias Futuras
+
+- [ ] Fases eliminatórias (Round of 16, Quartas, etc)
+- [ ] Interface para registrar resultados  
+- [ ] WebSocket para atualizações em tempo real
+- [ ] Autenticação de usuários
+- [ ] Histórico de jogos
+- [ ] Notificações push
+
+## 📄 Licença
+
+MIT
 
 ---
+
+Made with ⚽ for Copa 2026
 
 Feito por mim!

@@ -1,0 +1,20 @@
+{
+  "name": "world-cup-2026",
+  "version": "1.0.0",
+  "description": "World Cup 2026 API and Frontend",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run dev:backend & npm run dev:frontend",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npx http-server -p 8000",
+    "start": "npm run start:backend & npm run start:frontend",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npx http-server -p 8000",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install || true",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npx http-server -p 8000"
+  },
+  "keywords": ["worldcup", "2026", "api", "football"],
+  "author": "",
+  "license": "MIT"
+}
