@@ -1,0 +1,19 @@
+{
+  "name": "world-cup-api",
+  "version": "1.0.0",
+  "description": "API para gerenciar a Copa do Mundo com grupos A-L",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["world-cup", "api", "tournament"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "sqlite3": "^5.1.6"
+  }
+}
